@@ -20,3 +20,11 @@ jobs:
           uname -a
           python --version
           ls -la
+
+      - name: Contexto github em JSON
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+          echo "SHA do commit: $(echo "$GITHUB_CONTEXT" | jq -r '.sha')"
+          echo "Nome do evento: $(echo "$GITHUB_CONTEXT" | jq -r '.event_name')"
