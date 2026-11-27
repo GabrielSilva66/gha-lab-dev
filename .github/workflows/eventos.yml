@@ -1,0 +1,25 @@
+name: Workflow 2
+
+
+on:
+  push:
+    paths:
+      - "src/**"
+  workflow_dispatch:
+    inputs:
+      nome:
+        default: "turma"
+        required: true
+  schedule:
+    - cron: "*/5 * * * *"
+
+jobs:
+  comprimentar:
+    runs-on: ubuntu-latest
+    env:
+      NOME: inputs.nome
+
+    steps:
+      - name: comprimentar
+        run: echo "Opa, como vai $NOME"
+  
