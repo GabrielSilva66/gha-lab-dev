@@ -1,0 +1,27 @@
+name: Workflow 3
+
+on:
+  push:
+    branches:
+      - main
+  pull_request: 
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout do projeto
+      uses: actions/checkout@v7
+
+    - name: setup do projeto
+      uses: actions/setup-python@v7
+      with:
+        python-version: "3.12"
+
+    - name: build do projeto
+      run: pip install -r requirements.txt
+
+    - name: Executar testes
+      run: pytest -v
+
