@@ -8,8 +8,15 @@ on:
   workflow_dispatch:
     inputs:
       nome:
+        type: choice
         default: "turma"
         required: true
+        options:
+          - "Fulano"
+          - "cilano"
+          - "beltrano"        
+          - "turma"
+
   schedule:
     - cron: "*/5 * * * *"
 
